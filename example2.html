@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My First Leaflet Map!</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+
+    <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:75%; height:700px;}
+        .legend {
+            font-family: "HelveticaNeue-Light";
+        }
+         .legend .legend-title {
+            text-align: center;
+            margin-bottom: 3px;
+            font-weight: bold;
+            font-size: 90%;
+            }
+          .legend .legend-subtitle {
+            text-align: center;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 70%;
+            }
+          .legend .legend-scale ul {
+            margin: 0;
+            margin-bottom: 5px;
+            padding: 0;
+            float: left;
+            list-style: none;
+            }
+          .legend .legend-scale ul li {
+            font-size: 80%;
+            list-style: none;
+            margin-left: 0;
+            line-height: 18px;
+            margin-bottom: 2px;
+            }
+          .legend ul.legend-labels li span {
+            display: block;
+            float: left;
+            height: 16px;
+            width: 30px;
+            margin-right: 5px;
+            margin-left: 0;
+            border: 1px solid #999;
+            }
+          .legend .legend-source {
+            font-size: 70%;
+            color: #999;
+            clear: both;
+            }
+          .legend a {
+            color: #777;
+            }
+    </style>
+
+</head>
+<body>
+<div>
+
+ <div id='map'></div> 
+
+<!--  This <div> is your map. Put it in your html where you want the map to go. -->
+<div id='legend-content' style='display: none;'>
+<div class='legend'>
+<div class='legend-title'>Oustanding Debt Per Capita</div>
+<div class='legend-subtitle'>Fiscal Year 2012</div>
+<div class='legend-scale'>
+  <ul class='legend-labels'>
+    <li><span style='background:#edf8fb;'></span>$0</li>
+    <li><span style='background:#b2e2e2;'></span>$1-$100</li>
+    <li><span style='background:#66c2a4;'></span>$101-$500</li>
+    <li><span style='background:#2ca25f;'></span>$501-$1,000</li>
+    <li><span style='background:#006d2c;'></span>>$1,000</li>
+  </ul>
+</div>
+<div class='legend-source'>Source: <a href="http://www.texastransparency.org/Data_Center/Search_Datasets.php">Texas Transparency</a></div>
+</div>
+</div>
+</div>
+<script>
+
+//Add the background map layer
+// L.mapbox.map(element, id|url|tilejson, options)
+var map = L.mapbox.map('map', 'examples.map-9ijuk24y', {
+    minZoom: 5,
+    maxZoom: 10,
+    zoomControl: false
+}).setView([31.35, -99.64], 6)
+
+// Set the latitude and longitude of the map's starting view, and zoom level.
+
+// Add your custom data layer on top
+var layer = L.mapbox.tileLayer('texastribune.FY2012_Counties_Debt', {
+    detectRetina: true
+}).addTo(map);
+
+// Add your legend
+map.legendControl.addLegend(document.getElementById('legend-content').innerHTML);
+
+// Add interactive elements
+var gridlayer = L.mapbox.gridLayer('texastribune.FY2012_Counties_Debt');
+    //Create a gridlayer, set it to the 'map' id of your custom data layer
+map.addLayer(gridlayer);
+    //Append it to the map
+map.addControl(L.mapbox.gridControl(gridlayer, {follow: true}));
+
+</script>
+
+</body>
+</html>

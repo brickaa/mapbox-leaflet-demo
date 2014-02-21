@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My First Leaflet Map!</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+
+    <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:75%; height:700px;}
+    </style>
+
+</head>
+<body>
+<div>
+
+ <div id='map'></div> 
+<!--  This <div> is your map. Put it in your html where you want the map to go. -->
+
+<script>
+
+//Add the background map layer
+// L.mapbox.map(element, id|url|tilejson, options)
+var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+    .setView([31.35, -99.64], 6)
+
+// Set the latitude and longitude of the map's starting view, and zoom level.
+
+// Add your custom data layer on top
+var layer = L.mapbox.tileLayer('texastribune.FY2012_Counties_Debt').addTo(map);
+
+</script>
+
+</body>
+</html>
