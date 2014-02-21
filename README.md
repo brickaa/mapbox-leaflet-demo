@@ -1,3 +1,7 @@
+#Mapmaking! So fun.
+
+This tutorial will teach you how to make a Mapbox/Leaflet map, complete with legend and hover text. If you have any questions or suggestions for improvement, tweet me @becca_aa.
+
 ##Step 1: *DATA*
 
 The first step to building a map is getting your data in working order. Most databases don’t have geodata — polygon shapefiles or lat/lons — already included, so you'll have to join your data to a standard shapefile (.shp) with geolocation information. This example uses QGIS, an open/free alterantive to ArcGIS. 
