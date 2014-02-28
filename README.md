@@ -41,7 +41,7 @@ Select your .shp file. For our example, we’re using a Census TIGER/Line shapef
 ##Step 3: *STYLE* 
 One of the cool things about Mapbox is you can style your maps in **TileMill**, a separate program that makes it easy to preview the styles on your map, add multiple layers and create interactive elements, including legends, hover text and teasers. When you're ready to publish, TileMill also converts your stylized map into a series of "tiles" or images that will load much, much faster on your website than a complicated .geojson file. *Pro-tip: Always err on the side of efficiency/faster load times.*
 Mapbox has great examples of how to stylize maps in different ways using [CartoCSS](https://www.mapbox.com/tilemill/docs/manual/carto/) in TileMill. 
-###*Ok, let's walk-thru of our example...*
+###*Ok, on to our example...*
 **Open TileMill and create a new project.** TileMill will save your project locally under whatever "Filename" you use. *It's better not to use spaces.* But it's OK to use spaces in the "Name" assigned to the project.
 
 *Note: TileMill loads every new project with a "countries" layer and basic styles for that layer. If you don't want this layer, which we won't, you can just delete it.*
